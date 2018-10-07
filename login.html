@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  </head>
+  <body>
+    <br>
+    <div class="form-group">
+      <label>User Name</label>
+      <input id="user" type="text" style="width: 300px;"/>
+    </div> 
+    <br>
+    <div class="form-group">
+      <label>Password</label>
+      <input id="pwd" type="password" style="width: 300px;"/>
+    </div>
+    <br>
+    <div>
+      <button class="action" id="btnOk" onclick="onOK()">Ok</button>
+      <button onclick="google.script.host.close()">Cancel</button>
+    </div>
+    <script>
+    document.getElementById("user").focus();
+    function onOK() {
+      var loginData = {
+        user: document.getElementById("user").value,
+        pwd: document.getElementById("pwd").value
+      };
+               
+      google.script.run.withSuccessHandler(success)
+            .setCredentials(loginData);
+      }
+      
+      function success(){
+          google.script.host.close();
+      }
+    </script>
+  </body>
+</html>
+
+
