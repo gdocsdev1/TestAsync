@@ -14,22 +14,24 @@ function onSidebar(){
 } 
 
 function getListOfItems(){
-  Logger.log('in getListOfItems');
+  console.log('in getListOfItems');
   var i = 1+2;
-  Logger.log('value of i = ' + i);
+  console.log('value of i = ' + i);
   var items = ["One", "Two", "Three"];
   
   var html1 = HtmlService.createHtmlOutputFromFile('login').setWidth(300).setHeight(200);
   SpreadsheetApp.getUi().showModalDialog(html1,'Sign In'); 
   
+  items.push('Four');
+  console.log('returning items');  
   return items;
 }
 
 function setCredentials(loginData){
-  Logger.log('inSetcredentials');
+  console.log('inSetcredentials');
   if(loginData.user !== '' && loginData.pwd !== ''){
-    Logger.log('uName = ' + loginData.user + ' and password = ' + loginData.pwd);
-    Logger.log('credentials set');
+    console.log('uName = ' + loginData.user + ' and password = ' + loginData.pwd);
+    console.log('credentials set');
   }
-
+  return true;
 }
